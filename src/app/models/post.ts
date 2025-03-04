@@ -1,4 +1,4 @@
-export interface PostAttributes {
+export interface IPostAttribute {
     title: string;
     slug: string;
     description: string;
@@ -6,4 +6,15 @@ export interface PostAttributes {
     tags: string[];
     coverImage?: string;
     draft?: boolean;
+}
+
+export class Post {
+    title?: string;
+    slug?: string;
+    description?: string;
+    date?: string;
+    tags?: string[];
+    coverImage?: string;
+    draft?: boolean;
+    content?: string;
 }

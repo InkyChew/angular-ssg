@@ -1,0 +1,9 @@
+<article>
+    <header>
+        <h1>{{ post().title }}</h1>
+
+        <span>{{ post().date }}</span>
+    </header>
+
+    <section #content [innerHTML]="postContent()"></section>
+</article>

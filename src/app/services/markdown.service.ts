@@ -1,7 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { marked } from 'marked';
-import { PostAttributes } from '../models/post';
-import { HttpClient } from '@angular/common/http';
+import { IPostAttribute, Post } from '../models/post';
 import YAML from 'yaml';
 
 @Injectable({
@@ -9,22 +8,7 @@ import YAML from 'yaml';
 })
 export class MarkdownService {
 
-  private _http = inject(HttpClient);
-
-  fetchMarkdown(): void {
-    this._http.get('assets/posts/first-post.md', { responseType: 'text' }).subscribe({
-      next: (markdown) => {
-        const data = this.parseMarkdown(markdown);
-        console.log(data);
-      },
-      error: (error) => {
-        console.error('Error fetching Markdown:', error);
-      }
-    }
-    );
-  }
-
-  parseMarkdown(markdown: string) {
+  parseMarkdown(markdown: string): Post {
     const markdownYamlMetaPattern = /^(?:\-\-\-)(.*?)(?:\-\-\-|\.\.\.)/s
     const yamlMetaMatch = markdown.match(markdownYamlMetaPattern);
 
@@ -40,8 +24,8 @@ export class MarkdownService {
     return { content: this.parseMarkdownContent(markdown) };
   }
 
-  parseMarkdownMeta(yamlMeta: string) {
-    const meta = YAML.parse(yamlMeta) as PostAttributes;
+  parseMarkdownMeta(yamlMeta: string): Post {
+    const meta = YAML.parse(yamlMeta) as IPostAttribute;
     const slug = meta.slug;
 
     return {

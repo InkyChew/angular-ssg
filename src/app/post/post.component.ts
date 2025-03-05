@@ -27,21 +27,21 @@ export class PostComponent {
   }
 
   getPost(slug: string) {
-    this._service.getPost(slug).subscribe(res => this.post?.set(res));
+    this._service.getPost(slug).subscribe(res => this.post.set(res));
   }
 
   protected postContent = computed(() => {
     return this._domSanitizer.bypassSecurityTrustHtml(
-      this.post().content!
+      this.post().content
     );
   });
 
   private _updateMetaEffect = effect(() => {
     this._metaService.resetMeta({
-      title: this.post().title!,
+      title: this.post().title,
       type: 'article',
       description: this.post()
-        .description!.replace(/<[^>]*>/gm, '')
+        .description.replace(/<[^>]*>/gm, '')
         .replace(/\n/g, '')
         .trim(),
       keywords: this.post().tags || [],

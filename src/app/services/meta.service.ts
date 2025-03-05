@@ -1,12 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
+import { SiteService } from './site.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MetaService {
-  private title = inject(Title);
-  private meta = inject(Meta);
+
+  private _title = inject(Title);
+  private _meta = inject(Meta);
+  private _siteService = inject(SiteService);
 
   resetMeta(options: {
     title: string;
@@ -15,10 +18,10 @@ export class MetaService {
     type: 'website' | 'article';
     coverImage?: string;
   }) {
-    const siteName = '旅宿天靈蓋';
+    const siteName = this._siteService.site().title;
     const pageTitle = `${options.title}${options.title ? ' | ' : ''
       }${siteName}`;
-    this.title.setTitle(pageTitle);
+    this._title.setTitle(pageTitle);
 
     const tags: MetaDefinition[] = [
       { name: 'keywords', content: options.keywords.join(',') },
@@ -34,9 +37,9 @@ export class MetaService {
       { name: 'twitter:description', content: options.description },
     ];
     tags.forEach((tag) => {
-      this.meta.removeTag(`name="${tag.name}"`);
-      this.meta.removeTag(`property="${tag.property}"`);
-      this.meta.addTag(tag);
+      this._meta.removeTag(`name="${tag.name}"`);
+      this._meta.removeTag(`property="${tag.property}"`);
+      this._meta.addTag(tag);
     });
   }
 }

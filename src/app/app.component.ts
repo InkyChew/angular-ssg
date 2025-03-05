@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MarkdownService } from './services/markdown.service';
+import { SiteService } from './services/site.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +10,9 @@ import { MarkdownService } from './services/markdown.service';
 })
 export class AppComponent {
 
+  private _siteService = inject(SiteService);
+
+  ngOnInit() {
+    this._siteService.initSite();
+  }
 }

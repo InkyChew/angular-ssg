@@ -1,6 +1,5 @@
 export interface IPostAttribute {
     title: string;
-    slug: string;
     description: string;
     date: string;
     tags: string[];
@@ -10,7 +9,6 @@ export interface IPostAttribute {
 
 export class Post {
     title: string = '';
-    slug: string = '';
     description: string = '';
     date: string = '';
     tags: string[] = [];

@@ -34,7 +34,9 @@
             ],
             "scripts": [],
             "server": "src/main.server.ts",
-            "prerender": true,
+            "prerender": {
+              "routesFile": "src/assets/pages.txt"
+            },
             "ssr": {
               "entry": "server.ts"
             }
@@ -98,6 +100,13 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "generate-posts-json": {
+          "builder": "@inkychew/blog-builder:generate-posts-json",
+          "options": {
+            "markdownPostsPath": "src/assets/posts",
+            "targetJsonPath": "src/assets/posts.json"
           }
         }
       }

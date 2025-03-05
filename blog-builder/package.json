@@ -1,0 +1,15 @@
+{
+    "name": "@inkychew/blog-builder",
+    "version": "1.0.0",
+    "builders": "blog-builder.json",
+    "scripts": {
+        "build": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+        "@angular-devkit/architect": "^0.1902.0",
+        "@angular-devkit/core": "^19.2.0"
+    },
+    "devDependencies": {
+        "typescript": "^4.4.4"
+    }
+}

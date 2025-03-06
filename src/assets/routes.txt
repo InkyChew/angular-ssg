@@ -1,1 +1,3 @@
-/post/first-post
+/posts/
+/post/second-post
+/post-tags/Yilan

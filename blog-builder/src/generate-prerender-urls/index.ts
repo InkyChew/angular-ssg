@@ -54,9 +54,9 @@ async function generateUrls(options: Options, context: BuilderContext): Promise<
 
             return [
                 ...prev,
-                `/posts/tags/${tagSlug}`,
+                `/post-tags/${tagSlug}`,
                 ...(tagPostsPageCount > 1
-                    ? range(1, tagPostsPageCount + 1).map(pageNumber => `/posts/tags/${tagSlug}/page/${pageNumber}`)
+                    ? range(1, tagPostsPageCount + 1).map(pageNumber => `/post-tags/${tagSlug}/page/${pageNumber}`)
                     : [])
             ];
         }, []);

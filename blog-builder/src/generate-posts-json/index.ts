@@ -2,6 +2,7 @@ import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/ar
 import { JsonObject } from '@angular-devkit/core';
 import { readdirSync, writeFileSync } from 'fs';
 import { getPost } from './../../../utils/post';
+
 interface Options extends JsonObject {
     markdownPostsPath: string;
     targetJsonPath: string;
@@ -21,6 +22,7 @@ async function generatePostsJson(options: Options, context: BuilderContext): Pro
         .map(fileName => getPost(markdownPostsPath, fileName))
         .filter(post => !!post)
         .filter(post => !post.draft)
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         .reduce((prev, post) => ({
             ...prev,
             [post!.slug]: {

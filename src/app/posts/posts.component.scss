@@ -40,13 +40,15 @@
     inset: 0;
     background-color: rgba(0, 0, 0, .2);
     color: var(--mat-sys-surface);
-    text-align: center;
     text-decoration: none;
     transition: all 0.4s ease-in-out;
+    padding: 1em;
+    box-sizing: border-box;
 }
 
 .post-title {
-    margin: auto;
+    margin: 0;
+    margin-top: auto;
 }
 
 .post-card:hover img {

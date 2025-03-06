@@ -8,6 +8,7 @@ export interface IPostAttribute {
 }
 
 export class Post {
+    slug: string = '';
     title: string = '';
     description: string = '';
     date: string = '';

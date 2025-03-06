@@ -1,5 +1,7 @@
 <ul>
+    @for (post of posts(); track $index) {
     <li>
-        <a [routerLink]="['posts', ]"></a>
+        <a [routerLink]="['/post', post.slug]">{{ post.title }}</a>
     </li>
+    }
 </ul>

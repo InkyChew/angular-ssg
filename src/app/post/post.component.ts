@@ -27,7 +27,9 @@ export class PostComponent {
   }
 
   getPost(slug: string) {
-    this._service.getPost(slug).subscribe(res => this.post.set(res));
+    this._service.getPost(slug).subscribe(res => {
+      this.post.set(res);
+    });
   }
 
   protected postContent = computed(() => {

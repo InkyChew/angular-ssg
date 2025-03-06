@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { map, catchError, Observable } from 'rxjs';
+import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor(private _http: HttpClient) { }
+  private _http = inject(HttpClient);
 
-  getPosts() {
+  getPosts(): Observable<Post[]> {
     return this._http.get(`assets/posts.json`).pipe(
       map((posts) => Object.values(posts)),
       catchError(err => {
@@ -19,7 +20,7 @@ export class PostService {
     )
   }
 
-  getPost(slug: string) {
+  getPost(slug: string): Observable<Post> {
     return this._http.get(`assets/posts.json`).pipe(
       map((posts: any) => posts[slug]),
       catchError(err => {

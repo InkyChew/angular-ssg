@@ -108,6 +108,13 @@
             "markdownPostsPath": "src/assets/posts",
             "targetJsonPath": "src/assets/posts.json"
           }
+        },
+        "generate-prerender-urls": {
+          "builder": "@inkychew/blog-builder:generate-prerender-urls",
+          "options": {
+            "markdownPostsPath": "src/assets/posts",
+            "urlsPath": "src/assets/routes.txt"
+          }
         }
       }
     }

@@ -1,6 +1,5 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { PostService } from '../services/post.service';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Post } from '../models/post';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -14,18 +13,10 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class PostsComponent {
 
-  private _service = inject(PostService);
-  posts: WritableSignal<Post[]> = signal([]);
+  private _route = inject(ActivatedRoute);
+  posts: WritableSignal<Post[]> = signal(this._route.snapshot.data['posts']);
 
-  ngOnInit() {
-    this.getPosts();
-  }
-
-  getPosts() {
-    this._service.getPosts().subscribe(res => {
-      this.posts.set(res);
-    });
-  }
+  ngOnInit() { }
 
   getSummary(html: string, wordLimit: number = 50): string {
     // Parse the HTML to extract text content

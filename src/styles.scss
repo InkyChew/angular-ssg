@@ -9,3 +9,13 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+a {
+    color: var(--mat-sys-on-surface);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--mat-sys-primary);
+    text-decoration: underline;
+}

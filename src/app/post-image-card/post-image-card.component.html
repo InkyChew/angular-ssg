@@ -1,0 +1,6 @@
+<article class="post-card" [style.background-image]="'url(' + post.coverImage + ')'">
+    <a class="post-card-content" [routerLink]="['/post', post.slug]">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <p class="post-content">{{ getSummary(post.content) }}</p>
+    </a>
+</article>

@@ -1,0 +1,39 @@
+.post-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    border-style: solid;
+    background-color: var(--mdc-outlined-card-container-color, var(--mat-sys-surface));
+    border-radius: var(--mdc-outlined-card-container-shape, var(--mat-sys-corner-medium));
+    border-width: var(--mdc-outlined-card-outline-width, 1px);
+    border-color: var(--mdc-outlined-card-outline-color, var(--mat-sys-outline-variant));
+    box-shadow: var(--mdc-outlined-card-container-elevation, var(--mat-sys-level0));
+    overflow: hidden;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.post-card-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    inset: 0;
+    text-decoration: none;
+    padding: 1em;
+    box-sizing: border-box;
+    color: var(--mat-sys-surface);
+    background-color: rgba(0, 0, 0, .2);
+    transition: all 0.4s ease-in-out;
+    transform: translateY(100%);
+}
+
+.post-title {
+    margin: 0;
+    margin-top: auto;
+}
+
+.post-card:hover .post-card-content {
+    transform: translateY(0);
+}

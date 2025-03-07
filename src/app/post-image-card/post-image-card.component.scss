@@ -5,12 +5,7 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     box-sizing: border-box;
-    border-style: solid;
-    background-color: var(--mdc-outlined-card-container-color, var(--mat-sys-surface));
-    border-radius: var(--mdc-outlined-card-container-shape, var(--mat-sys-corner-medium));
-    border-width: var(--mdc-outlined-card-outline-width, 1px);
-    border-color: var(--mdc-outlined-card-outline-color, var(--mat-sys-outline-variant));
-    box-shadow: var(--mdc-outlined-card-container-elevation, var(--mat-sys-level0));
+    border: 1px solid;
     overflow: hidden;
     background-origin: border-box;
     background-repeat: no-repeat;
@@ -30,11 +25,19 @@
     background: linear-gradient(to top, rgba(0, 0, 0, .7), rgba(255, 255, 255, 0));
 }
 
-.post-title {
+.post-card-content .post-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     margin: 0;
 }
 
-.post-content {
+.post-card-content .post-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     opacity: 0;
     max-height: 0px;
     margin: 0;

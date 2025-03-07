@@ -1,9 +1,21 @@
-<article>
+<article id="post">
     <header>
         <h1>{{ post().title }}</h1>
 
         <span>{{ post().date }}</span>
     </header>
 
+    <!-- @if (post().toc) { -->
+        <post-toc [contentElement]="content"></post-toc>
+    <!-- } -->
+
     <section #content [innerHTML]="postContent()"></section>
+
+    <ul class="tags">
+        @for (tag of post().tags; track tag) {
+        <li class="tag">
+            <a [routerLink]="['/post-tag', tag]">{{ tag }}</a>
+        </li>
+        }
+    </ul>
 </article>

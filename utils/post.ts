@@ -43,5 +43,16 @@ const parseYamlMeta = (meta: string): IPostAttribute => {
 }
 
 const parseMarkdownContent = (content: string) => {
-    return marked.parse(content) as string;
+    const htmlContent = marked.parse(content) as string;
+    return transformContent(htmlContent);
 }
+
+const transformContent = (content: string) =>
+    // title anchor
+    content.replace(
+        /<h([1-6])(.*)>(.*)<\/h([1-6])>/g,
+        (match, head1, headAttr, title, head2) => {
+            const slug = title.trim().replace(/ /g, '-').toLowerCase();
+            return `<h${head1}${headAttr} id="${slug}">${title}</h${head2}>`;
+        }
+    )

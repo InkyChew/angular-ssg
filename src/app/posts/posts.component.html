@@ -1,12 +1,11 @@
-<section class="posts">
-    @for (post of posts(); track $index) {
-    <article class="post-card">
-
-        <img [src]="post.coverImage" [alt]="post.slug">
-
-        <a class="post-card-content" [routerLink]="['/post', post.slug]">
-            <h2 class="post-title">{{ post.title }}</h2>
-        </a>
-    </article>
-    }
+<section>
+    <h1>Posts</h1>
+    
+    <div class="posts">
+        @for (post of posts(); track $index) {
+            <div class="post">
+                <post-image-card [post]="post"></post-image-card>
+            </div>
+        }
+    </div>
 </section>

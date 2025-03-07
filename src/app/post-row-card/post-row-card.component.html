@@ -5,11 +5,11 @@
         </a>
     </figure>
     <div class="post-card-content">
-        <h3 class="post-title">
+        <h2 class="post-title">
             <a [routerLink]="['/post', post.slug]">
                 {{ post.title }}
             </a>
-        </h3>
+        </h2>
         <p class="post-content">{{ post.content | extractText }}</p>
     </div>
 </article>

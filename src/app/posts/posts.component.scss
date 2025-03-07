@@ -1,72 +1,23 @@
 .posts {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: stretch;
     gap: 1em;
     padding: 1em;
 }
 
-.post-card {
-    position: relative;
+.post {
     width: calc(33.3333% - 1em);
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-style: solid;
-    background-color: var(--mdc-outlined-card-container-color, var(--mat-sys-surface));
-    border-radius: var(--mdc-outlined-card-container-shape, var(--mat-sys-corner-medium));
-    border-width: var(--mdc-outlined-card-outline-width, 1px);
-    border-color: var(--mdc-outlined-card-outline-color, var(--mat-sys-outline-variant));
-    box-shadow: var(--mdc-outlined-card-container-elevation, var(--mat-sys-level0));
-    overflow: hidden;
-}
-
-.post-card img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform-origin: center;
-    transition: transform 0.4s ease-in-out;
-}
-
-.post-card-content {
-    opacity: 0;
-    display: flex;
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, .2);
-    color: var(--mat-sys-surface);
-    text-decoration: none;
-    transition: all 0.4s ease-in-out;
-    padding: 1em;
-    box-sizing: border-box;
-}
-
-.post-title {
-    margin: 0;
-    margin-top: auto;
-}
-
-.post-card:hover img {
-    transform: scale(1.1);
-}
-
-.post-card:hover .post-card-content {
-    opacity: 1;
 }
 
 @media (max-width: 768px) {
-    .post-card {
+    .post {
         width: calc(50% - 1em);
     }
 }
 
 @media (max-width: 480px) {
-    .post-card {
+    .post {
         width: 100%;
     }
 }

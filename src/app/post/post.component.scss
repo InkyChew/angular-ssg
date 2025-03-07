@@ -1,0 +1,10 @@
+.tags {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.tags .tag {
+    border: 1px solid;
+    padding: 5px 10px;
+}

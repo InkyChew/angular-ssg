@@ -22,6 +22,7 @@ async function generatePostsJson(options: Options, context: BuilderContext): Pro
         .map(fileName => getPost(markdownPostsPath, fileName))
         .filter(post => !!post)
         .filter(post => !post.draft)
+        .filter(post => new Date(post.date) <= new Date())
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         .reduce((prev, post) => ({
             ...prev,

@@ -1,0 +1,17 @@
+<nav>
+    <ul>
+        @for (heading of headings(); track $index)
+        {
+        @if(heading.level == 3)
+        {
+        <ul>
+            <li>{{ heading.title }}</li>
+        </ul>
+        }
+        @else
+        {
+        <li>{{ heading.title }}</li>
+        }
+        }
+    </ul>
+</nav>

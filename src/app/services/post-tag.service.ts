@@ -10,7 +10,7 @@ export class PostTagService {
 
   private _postService = inject(PostService);
 
-  getTagPost() {
+  getTagPostMap() {
     return this._postService.getPosts().pipe(
       map((posts: Post[]) => {
         const tagPostMap = new Map<string, Post[]>();
@@ -23,9 +23,17 @@ export class PostTagService {
               tagPostMap.set(tag, [post]);
             }
           });
-        });
+        })
 
         return tagPostMap;
+      })
+    )
+  }
+
+  getTagPost(tag: string) {
+    return this.getTagPostMap().pipe(
+      map((tagPostMap) => {
+        return tagPostMap.get(tag) ?? [];
       })
     );
   }

@@ -1,1 +1,7 @@
-<p>post-tag works!</p>
+<section class="post-tag">
+    <h2>#{{ tag }}</h2>
+    
+    @for (post of posts(); track post.slug) {
+        <post-row-card [post]="post"></post-row-card>
+    }
+</section>

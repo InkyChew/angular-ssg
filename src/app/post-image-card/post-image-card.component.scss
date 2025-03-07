@@ -20,15 +20,14 @@
 .post-card-action {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, .8), rgba(255, 255, 255, 0));
 }
 
 .post-card-content {
     margin-top: auto;
-    padding: 1em;
+    padding: 2em 1em;
     box-sizing: border-box;
     color: var(--mat-sys-surface);
-    z-index: 2;
+    background: linear-gradient(to top, rgba(0, 0, 0, .7), rgba(255, 255, 255, 0));
 }
 
 .post-title {
@@ -38,10 +37,12 @@
 .post-content {
     opacity: 0;
     max-height: 0px;
+    margin: 0;
     transition: all 0.5s ease-in-out;
 }
 
 .post-card:hover .post-content {
     opacity: 1;
     max-height: 100px;
+    margin-top: 1em;
 }

@@ -1,8 +1,13 @@
 <article id="post">
-    <header>
-        <h1>{{ post().title }}</h1>
+    <header class="post-header">
+        <h1 class="post-title">{{ post().title }}</h1>
 
-        <span>{{ post().date }}</span>
+        <div class="post-date">
+            <span>發布日期：{{ post().date | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+            @if (post().lastmod) {
+                <span>最後更新日期：{{ post().lastmod | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+            }
+        </div>
     </header>
 
     <!-- @if (post().toc) { -->

@@ -27,10 +27,6 @@ export const parseMarkdown = (markdown: string, slug: string) => {
             ...post,
             ...meta,
             slug: slug,
-            date: new Date(meta.date)
-                .toISOString()
-                .slice(0, 19)
-                .replace(/T/g, ' '),
             content: parseMarkdownContent(mdContent)
         }
     }

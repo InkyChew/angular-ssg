@@ -3,10 +3,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Post } from '../models/post';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PostTocComponent } from '../post-toc/post-toc.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-post',
-  imports: [RouterModule, PostTocComponent],
+  imports: [RouterModule, PostTocComponent, DatePipe],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })

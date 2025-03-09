@@ -1,23 +1,21 @@
 .posts {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1em;
-    padding: 1em;
 }
 
 .post {
-    width: calc(33.3333% - 1em);
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
-    .post {
-        width: calc(50% - 1em);
+    .posts {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
-    .post {
-        width: 100%;
+    .posts {
+        grid-template-columns: 1fr;
     }
 }

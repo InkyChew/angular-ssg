@@ -10,14 +10,11 @@ import { map, ReplaySubject } from 'rxjs';
 })
 export class PostTocComponent {
 
-  private _contentElement!: HTMLElement;
+  @Input({ required: true }) contentElement!: HTMLElement;
   private _contentElement$ = new ReplaySubject<HTMLElement>(1);
-  @Input()
-  set contentElement(value: HTMLElement) {
-    this._contentElement = value;
-    this._contentElement$.next(this._contentElement);
-    console.log(this._contentElement);
-    
+
+  ngAfterViewInit() {
+    this._contentElement$.next(this.contentElement);
   }
 
   private headings$ = this._contentElement$.pipe(

@@ -1,3 +1,29 @@
+.fae {
+    height: 500px;
+}
+
+.post-page {
+    display: flex;
+    flex: wrap;
+
+    .post-page-aside {
+        flex: 1;
+        margin-top: 100px;
+        background-color: aliceblue;
+
+        .post-toc {
+            position: sticky;
+            top: 20px;
+        }
+
+        .btn-top {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}
+
 #post {
     max-width: 720px;
     box-sizing: border-box;

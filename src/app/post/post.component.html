@@ -1,26 +1,37 @@
-<article id="post">
-    <header class="post-header">
-        <h1 class="post-title">{{ post().title }}</h1>
+<div class="post-page">
+    <article id="post">
+        <header class="post-header">
+            <h1 class="post-title">{{ post().title }}</h1>
 
-        <div class="post-date">
-            <span>發布日期：{{ post().date | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
-            @if (post().lastmod) {
+            <div class="post-date">
+                <span>發布日期：{{ post().date | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+                @if (post().lastmod) {
                 <span>最後更新日期：{{ post().lastmod | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+                }
+            </div>
+
+            @if (post().toc) {
+            <div class="post-toc">
+                <post-toc [contentElement]="content"></post-toc>
+            </div>
             }
-        </div>
-    </header>
+        </header>
 
-    <!-- @if (post().toc) { -->
-        <post-toc [contentElement]="content"></post-toc>
-    <!-- } -->
+        <section #content [innerHTML]="postContent()"></section>
 
-    <section #content [innerHTML]="postContent()"></section>
+        <p class="fae"></p>
+        <ul class="tags">
+            @for (tag of post().tags; track tag) {
+            <li class="tag">
+                <a [routerLink]="['/post-tag', tag]">{{ tag }}</a>
+            </li>
+            }
+        </ul>
+    </article>
 
-    <ul class="tags">
-        @for (tag of post().tags; track tag) {
-        <li class="tag">
-            <a [routerLink]="['/post-tag', tag]">{{ tag }}</a>
-        </li>
+    <aside class="post-page-aside">
+        @if (topVisible()) {
+        <button class="btn-top" (click)="goTop()"><mat-icon>keyboard_double_arrow_up</mat-icon></button>
         }
-    </ul>
-</article>
+    </aside>
+</div>

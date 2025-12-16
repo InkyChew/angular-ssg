@@ -21,3 +21,12 @@ a:hover {
     color: var(--mat-sys-primary);
     text-decoration: underline;
 }
+
+button {
+    background: transparent;
+    padding: 5px 10px;
+    border: 1px solid;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}

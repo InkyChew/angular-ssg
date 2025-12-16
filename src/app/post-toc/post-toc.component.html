@@ -1,17 +1,27 @@
-<nav>
+<nav class="toc" [ngClass]="{'open' : toggle}">
+    <label class="toc-title">
+        <span>文章導覽</span>
+        <mat-icon class="icon">arrow_left</mat-icon>
+        <input type="checkbox" [(ngModel)]="toggle">
+    </label>
+
+    <!-- Use the template to render the top-level headings -->
+    <div class="toc-content">
+        <ng-template [ngTemplateOutlet]="headingTemplate" [ngTemplateOutletContext]="{ headings: headings() }"></ng-template>
+    </div>
+</nav>
+
+<ng-template #headingTemplate let-headings="headings">
     <ul>
-        @for (heading of headings(); track $index)
-        {
-        @if(heading.level == 3)
-        {
-        <ul>
-            <li>{{ heading.title }}</li>
-        </ul>
-        }
-        @else
-        {
-        <li>{{ heading.title }}</li>
-        }
+        @for (heading of headings; track $index) {
+        <li>
+            <a [href]="'#' + heading.id">{{ heading.title }}</a>
+            <!-- If there are sub-headings, render them recursively -->
+            @if (heading.sub && heading.sub.length > 0) {
+            <ng-template [ngTemplateOutlet]="headingTemplate"
+                [ngTemplateOutletContext]="{ headings: heading.sub }"></ng-template>
+            }
+        </li>
         }
     </ul>
-</nav>
+</ng-template>

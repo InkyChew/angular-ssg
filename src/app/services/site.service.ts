@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import YAML from 'yaml';
+import { parse as yamlParse} from 'yaml';
 import { Site } from '../models/site';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class SiteService {
   initSite() {
     this._http.get(`assets/site.yaml`, { responseType: 'text' }).subscribe({
       next: (ylConfig) => {
-        const config = YAML.parse(ylConfig);
+        const config = yamlParse(ylConfig);
         this.site.set(config);
       },
       error: (err) => {

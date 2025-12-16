@@ -2,9 +2,9 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { marked } from 'marked';
 import { IPostAttribute, Post } from '../src/app/models/post';
-import * as YAML from 'yaml';
+import { parse as yamlParse } from 'yaml';
 
-export const getPost = (folderPath: string, fileName: string) => {
+export const getPost = (folderPath: string, fileName: string): Post | null => {
     const filePath = join(folderPath, fileName);
     const fileContent = readFileSync(filePath).toString('utf-8');
     // replace `.md` as slug
@@ -13,7 +13,7 @@ export const getPost = (folderPath: string, fileName: string) => {
 }
 
 
-export const parseMarkdown = (markdown: string, slug: string) => {
+export const parseMarkdown = (markdown: string, slug: string): Post | null => {
     const post = new Post();
     const yamlPattern = /^(?:\-\-\-)(.*?)(?:\-\-\-|\.\.\.)/s
     const yamlMatch = markdown.match(yamlPattern);
@@ -35,7 +35,7 @@ export const parseMarkdown = (markdown: string, slug: string) => {
 }
 
 const parseYamlMeta = (meta: string): IPostAttribute => {
-    return YAML.parse(meta) as IPostAttribute;
+    return yamlParse(meta) as IPostAttribute;
 }
 
 const parseMarkdownContent = (content: string) => {

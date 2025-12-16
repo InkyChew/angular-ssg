@@ -9,7 +9,7 @@ export interface IPostAttribute {
     draft?: boolean;
 }
 
-export class Post {
+export class Post implements IPostAttribute {
     slug: string = '';
     title: string = '';
     description: string = '';

@@ -1,15 +1,22 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { inject, Pipe, PipeTransform, PLATFORM_ID } from '@angular/core';
 
 @Pipe({
   name: 'extractText'
 })
 export class ExtractTextPipe implements PipeTransform {
+  private platformId = inject(PLATFORM_ID);
+  transform(html: string, ...args: unknown[]): string {
 
-  transform(html: string, ...args: unknown[]): unknown {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const textContent = doc.body.textContent || "";
-    return textContent.split(/\s+/).join(' ');
+    if (isPlatformBrowser(this.platformId)) {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+
+      return (doc.body.textContent || '')
+        .split(/\s+/)
+        .join(' ');
+    }
+
+    return '';
   }
 
 }
